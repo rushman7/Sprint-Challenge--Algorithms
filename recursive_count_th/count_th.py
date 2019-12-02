@@ -10,29 +10,11 @@ def count_th(word):
 
     total = 0
 
-    def counter(word, total):
-      if word.count('t') == 0:
-        print('total:', total, word)
-        return total
+    if len(word) < 2:
+        return 0
+    
+    elif word[0:2] == 'th':
+        return count_th(word[1:]) + 1
 
-      if word.count('t') > 0:
-        print(word)
-        if word[word.find('t')] == word[len(word)-1]:
-          total += 1
-          word = word[:-1]
-          print('New Word:', word)
-          return counter(word, total)
-        elif word[word.find('t')+1] == 'h':
-          total += 1
-          word = word[:word.find('t')] + word[word.find('t') + 2:] 
-          print('New Word:', word)
-          return counter(word, total)
-        elif word.find('t') > 0:
-          word = word[:word.find('t')] + word[word.find('t') + 1:] 
-          print('New Word:', word)
-          return counter(word, total)
-
-    return counter(word, total)
-
-# count_th("thhtthht")
-print(count_th("thhtthht"))
+    else:
+        return count_th(word[1:])
