@@ -12,4 +12,16 @@ c) O(n log(n), Since we divide, then conquer
 
 ## Exercise II
 
+A binary search approach can lead to the least amount of eggs used for this test.
 
+def binary_search(arr, n):
+  low = 0
+  high = len(arr)-1
+  while low <= high:
+    middle = (low+high)/2
+    if n < arr[middle]:
+      high = middle-1
+    elif n > arr[middle]:
+      low = middle+1
+    else: 
+      return middle
